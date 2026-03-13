@@ -24,6 +24,25 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
 
   const isFav = isFavorite(car.id);
 
+  const handleFavorite = () => {
+    toggleFavorite(car.id);
+    animateHeart();
+  };
+  const animateHeart = () => {
+    Animated.sequence([
+      Animated.timing(scale, {
+        toValue: 1.4,
+        duration: 120,
+        useNativeDriver: true,
+      }),
+      Animated.timing(scale, {
+        toValue: 1,
+        duration: 120,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
   return (
     <Pressable onPress={() => router.push(`/details?id=${car.id}`)}>
       <View style={styles.container}>
