@@ -4,6 +4,7 @@ export default [
     title: "JAC S3",
     power: 110,
     car: "JAC", // Додано
+    speed: " 3.4 sec",
     image: require(".//..//../assets/cars/JAC S3 NEW.jpg"),
   },
   {
@@ -11,6 +12,7 @@ export default [
     title: "BMW M5",
     power: 600,
     car: "BMW",
+    speed: " 5.4 sec",
     image: require(".//..//../assets/cars/josh-berquist-_4sWbzH5fp8-unsplash.jpg"),
   },
   {
@@ -18,6 +20,7 @@ export default [
     title: "Tesla Model S",
     power: 1020,
     car: "Tesla",
+    speed: " 3.7 sec",
     image: require(".//..//../assets/cars/hyundai-motor-group-V1DFo8C4JPA-unsplash.jpg"),
   },
   {
@@ -25,12 +28,15 @@ export default [
     title: "Audi RS6",
     power: 600,
     car: "Audi",
+    speed: " 3.4 sec",
     image: require(".//..//../assets/cars/olav-tvedt--oVaYMgBMbs-unsplash.jpg"),
   },
   {
     id: 5,
     title: "BMW M3",
     power: 480,
+    car: "BMW",
+    speed: " 3.4 sec",
     image: require(".//..//../assets/cars/roberto-nickson-zu95jkyrGtw-unsplash.jpg"),
   },
 ];
