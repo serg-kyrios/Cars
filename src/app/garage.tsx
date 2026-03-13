@@ -4,7 +4,7 @@ import CarCard from "..//components/CarCard";
 
 export default function GarageScreen() {
   return (
-    <View>
+    <View style={{ backgroundColor: "#C9C6D2" }}>
       <FlatList data={cars} renderItem={({ item }) => <CarCard car={item} />} />
     </View>
   );
