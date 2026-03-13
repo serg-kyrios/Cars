@@ -1,4 +1,11 @@
-import { View, Text, Button, StyleSheet, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  ImageBackground,
+  Pressable,
+} from "react-native";
 import { router } from "expo-router";
 
 export default function HomeScreen() {
@@ -15,6 +22,16 @@ export default function HomeScreen() {
         <Button title="Open Garage" onPress={() => router.push("/garage")} />
         <Text></Text>
         <Button title="Open Details" onPress={() => router.push("/details")} />
+        <Button
+          title="Open Favorites"
+          onPress={() => router.push("/favorites")}
+        />
+        <Pressable onPress={() => router.push("./favorites")}>
+          <Text>
+            ⭐ Favorites Garage 🚗 Your garage is empty Add some favorite cars
+            ❤️
+          </Text>
+        </Pressable>
       </View>
     </ImageBackground>
   );

@@ -55,14 +55,16 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
         <Pressable
           onPress={(e) => {
             e.stopPropagation();
-            toggleFavorite(car.id);
+            handleFavorite();
           }}
         >
-          <Ionicons
-            name={isFav ? "heart" : "heart-outline"}
-            size={24}
-            color={isFav ? "#ff4444" : "#666"}
-          />
+          <Animated.View style={{ transform: [{ scale }] }}>
+            <Ionicons
+              name={isFav ? "heart" : "heart-outline"}
+              size={24}
+              color={isFav ? "#ff4444" : "#666"}
+            />
+          </Animated.View>
         </Pressable>
       </View>
     </Pressable>

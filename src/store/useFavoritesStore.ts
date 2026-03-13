@@ -1,10 +1,11 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type Car = { id: number; title: string };
 
 interface FavoritesState {
-  favorites: Car["id"][]; // Масив ID улюблених
+  favorites: number[];
   toggleFavorite: (carId: number) => void;
   isFavorite: (carId: number) => boolean;
 }
@@ -17,15 +18,19 @@ export const useFavoritesStore = create<FavoritesState>()(
       toggleFavorite: (carId) =>
         set((state) => {
           const isFav = state.favorites.includes(carId);
+
           return {
             favorites: isFav
-              ? state.favorites.filter((id) => id !== carId) // Видалити
-              : [...state.favorites, carId], // Додати
+              ? state.favorites.filter((id) => id !== carId)
+              : [...state.favorites, carId],
           };
         }),
 
       isFavorite: (carId) => get().favorites.includes(carId),
     }),
-    { name: "favorites-storage" },
+    {
+      name: "favorites-storage",
+      storage: createJSONStorage(() => AsyncStorage),
+    },
   ),
 );
