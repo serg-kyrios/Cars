@@ -17,7 +17,7 @@ export default function FavoritesScreen() {
   }
 
   return (
-    <View>
+    <View >
       <FlatList
         data={favoriteCars}
         keyExtractor={(item) => item.id.toString()}

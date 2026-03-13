@@ -7,6 +7,7 @@ import {
   Pressable,
 } from "react-native";
 import { router } from "expo-router";
+import GarageButton from "@/components/GaragButton";
 
 export default function HomeScreen() {
   return (
@@ -17,21 +18,12 @@ export default function HomeScreen() {
       imageStyle={{ borderRadius: 20 }} // Закруглення
     >
       <View style={styles.container}>
-        <Text style={styles.text}>🚗 Welcome to Car Garage</Text>
-
-        <Button title="Open Garage" onPress={() => router.push("/garage")} />
-        <Text></Text>
-        <Button title="Open Details" onPress={() => router.push("/details")} />
-        <Button
-          title="Open Favorites"
-          onPress={() => router.push("/favorites")}
-        />
-        <Pressable onPress={() => router.push("./favorites")}>
-          <Text>
-            ⭐ Favorites Garage 🚗 Your garage is empty Add some favorite cars
-            ❤️
-          </Text>
-        </Pressable>
+       
+        <View style={{ gap: 15 }}>
+          <GarageButton title="🚗 Explore" route="/explore" />
+          <GarageButton title="❤️ Favorites" route="/favorites" />
+          <GarageButton title="🏠 Garage" route="/garage" />
+        </View>
       </View>
     </ImageBackground>
   );
@@ -51,9 +43,5 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-  bottom: {
-    position: "absolute",
-    bottom: 100,
-    marginBottom: 100,
-  },
+  
 });
