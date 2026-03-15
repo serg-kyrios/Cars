@@ -1,13 +1,6 @@
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  ImageBackground,
-  Pressable,
-} from "react-native";
-import { router } from "expo-router";
 import GarageButton from "@/components/GaragButton";
+import { ImageBackground, Text, View } from "react-native";
+import { styleHomeScreen } from "../../styles/styleHomeScreen";
 
 export default function HomeScreen() {
   return (
@@ -17,31 +10,17 @@ export default function HomeScreen() {
       resizeMode="cover" // Покриває весь простір
       imageStyle={{ borderRadius: 20 }} // Закруглення
     >
-      <View style={styles.container}>
-       
+      <View style={styleHomeScreen.container}>
+        <View style={styleHomeScreen.container2}>
+          <Text style={styleHomeScreen.text}>🚗 Welcome to Car Garage</Text>
+        </View>
+
         <View style={{ gap: 15 }}>
-          <GarageButton title="🚗 Explore" route="/explore" />
-          <GarageButton title="❤️ Favorites" route="/favorites" />
           <GarageButton title="🏠 Garage" route="/garage" />
+          <GarageButton title="❤️ Favorites" route="/favorites" />
+          <GarageButton title="🚗 Details" route="/details" />
         </View>
       </View>
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.5)", // Напівпрозорий фон
-    padding: 20,
-    borderRadius: 20,
-  },
-  text: {
-    fontSize: 24,
-    color: "white",
-    fontWeight: "bold",
-  },
-  
-});

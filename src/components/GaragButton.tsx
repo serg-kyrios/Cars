@@ -1,5 +1,7 @@
-import { Text, Pressable, StyleSheet } from "react-native";
 import { router } from "expo-router";
+import { Pressable, Text } from "react-native";
+import { COLORS } from "../../styles/globalStyles";
+import { themeGaragButton } from "../../styles/styleGaragButton";
 
 type GarageButtonProps = {
   title: string;
@@ -9,29 +11,13 @@ type GarageButtonProps = {
 export default function GarageButton({ title, route }: GarageButtonProps) {
   return (
     <Pressable
-      onPress={() => router.push(route as any)} //не ідеально
+      onPress={() => router.push(route as any)}
       style={({ pressed }) => [
-        { backgroundColor: pressed ? "#ddd" : "#007AFF" },
-        styles.button,
+        { backgroundColor: pressed ? COLORS.secondary : COLORS.primary },
+        themeGaragButton.button, // ✅ З файлу!
       ]}
     >
-      <Text style={styles.buttonText}>{title}</Text>
+      <Text style={themeGaragButton.buttonText}>{title}</Text> // ✅ З файлу!
     </Pressable>
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    padding: 15,
-    borderRadius: 8,
-    width: 250,
-    alignItems: "center", // ✅ Центрування тексту
-    justifyContent: "center",
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "600", // ✅ 600 замість bold
-    fontSize: 16, // ✅ Розмір шрифту
-    textAlign: "center",
-  },
-});
