@@ -2,8 +2,8 @@
 import cars from "@/data/cars"; // масив машин
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useRef } from "react";
-import { Animated, Image, ImageBackground, Text, View } from "react-native";
-import { styleDetails } from "..//../styles/styleDetails";  
+import { Animated, ImageBackground, Text, View } from "react-native";
+import { styleDetails } from "..//../styles/styleDetails";
 
 type Car = {
   id: number;
@@ -17,6 +17,16 @@ export default function DetailsScreen() {
   const { id } = useLocalSearchParams();
   const slideAnim = useRef(new Animated.Value(100)).current; // старт нижче на 100
   const car = cars.find((c) => c.id === Number(id));
+
+  const scaleAnim = useRef(new Animated.Value(0.7)).current;
+
+  useEffect(() => {
+    Animated.spring(scaleAnim, {
+      toValue: 1,
+      friction: 5,
+      useNativeDriver: true,
+    }).start();
+  }, []);
 
   useEffect(() => {
     Animated.timing(slideAnim, {
@@ -59,7 +69,11 @@ export default function DetailsScreen() {
       <Text>Потужність: {car.power} hp</Text>
       <Text>ID: {car.id}</Text>
 
-      <Image source={car.image} style={styleDetails.contentFit} />
+      {/* <Image source={car.image} style={styleDetails.contentFit} /> */}
+      <Animated.Image
+        source={car.image}
+        style={[styleDetails.image, { transform: [{ scale: scaleAnim }] }]}
+      />
     </View>
   );
 }

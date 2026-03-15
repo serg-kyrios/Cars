@@ -1,9 +1,10 @@
-import { View, Text, Pressable, StyleSheet, Animated } from "react-native";
-import { router } from "expo-router";
-import cars from "@/data/cars"; // ✅ Масив машин
 import { useFavoritesStore } from "@/store/useFavoritesStore";
-import { useRef } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import { useRef } from "react";
+import { Animated, Pressable, Text, View } from "react-native";
+import { COLORS } from "../../styles/globalStyles";
+import { styleCarCard } from "../../styles/styleCarCard";
 
 type Car = {
   id: number;
@@ -45,8 +46,8 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
 
   return (
     <Pressable onPress={() => router.push(`/details?id=${car.id}`)}>
-      <View style={styles.container}>
-        <Text style={styles.text}>{car.id}</Text>
+      <View style={styleCarCard.container}>
+        <Text style={styleCarCard.text}>{car.id}</Text>
         <Text>{car.title}</Text>
         <Text>{car.power} hp</Text>
         <Text>{car.car}</Text>
@@ -62,7 +63,7 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
             <Ionicons
               name={isFav ? "heart" : "heart-outline"}
               size={24}
-              color={isFav ? "#ff4444" : "#666"}
+              color={isFav ? COLORS.secondary : COLORS.fifth}
             />
           </Animated.View>
         </Pressable>
@@ -72,22 +73,3 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
 };
 
 export default CarCard;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 24,
-    color: "red",
-    fontWeight: "bold",
-    marginBottom: 10,
-    marginTop: 10,
-  },
-  text2: {
-    fontSize: 24,
-    marginBottom: 10,
-  },
-});
