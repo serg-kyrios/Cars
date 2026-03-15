@@ -10,7 +10,7 @@ export default function FavoritesScreen() {
 
   if (favoriteCars.length === 0) {
     return (
-      <View>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>No favorite cars yet ❤️</Text>
       </View>
     );

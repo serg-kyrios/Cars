@@ -6,6 +6,7 @@ export const COLORS = {
   secondary: "#ff4444",
   background: "#f8f9fa",
   backgroundColor: "#A890F0",
+  third: "#00FFFF",
 };
 
 export const globalStyles = StyleSheet.create({
