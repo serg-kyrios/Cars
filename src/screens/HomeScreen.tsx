@@ -1,4 +1,4 @@
-import GarageButton from "@/components/GaragButton";
+import GarageButton from "@/components/GarageButton";
 import { ImageBackground, Text, View } from "react-native";
 import { styleHomeScreen } from "../../styles/styleHomeScreen";
 

@@ -1,7 +1,7 @@
 import { router } from "expo-router";
-import { Pressable, Text } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { COLORS } from "../../styles/globalStyles";
-import { styleGaragButton } from "../../styles/styleGaragButton";
+import { styleGarageButton } from "../../styles/styleGarageButton";
 
 type GarageButtonProps = {
   title: string;
@@ -14,10 +14,18 @@ export default function GarageButton({ title, route }: GarageButtonProps) {
       onPress={() => router.push(route as any)}
       style={({ pressed }) => [
         { backgroundColor: pressed ? COLORS.third : COLORS.primary },
-        styleGaragButton.button, // ✅ З файлу!
+        styleGarageButton.button, // ✅ З файлу!
       ]}
     >
-      <Text style={styleGaragButton.buttonText}>{title}</Text> // ✅ З файлу!
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Text style={styleGarageButton.buttonText}>{title}</Text>
+      </View>
     </Pressable>
   );
 }

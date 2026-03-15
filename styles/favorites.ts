@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "./globalStyles";
 
-export const styleDetails = StyleSheet.create({
+export const favoritesStyles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
@@ -20,16 +19,5 @@ export const styleDetails = StyleSheet.create({
   text2: {
     fontSize: 24,
     marginBottom: 10,
-  },
-  contentFit: {
-    width: "100%",
-    height: 250,
-    resizeMode: "cover",
-    borderRadius: 15,
-  },
-  image: {
-    width: 320,
-    height: 200,
-    borderRadius: 20,
   },
 });

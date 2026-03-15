@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "./globalStyles";
 
-export const styleGaragButton = StyleSheet.create({
+export const styleGarageButton = StyleSheet.create({
   button: {
     padding: 15,
     borderRadius: 8,

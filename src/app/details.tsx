@@ -1,9 +1,12 @@
 // app/details.tsx
 import cars from "@/data/cars"; // масив машин
+import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useRef } from "react";
-import { Animated, ImageBackground, Text, View } from "react-native";
+import { Animated, Text, View } from "react-native";
+import { CAR_GRADIENTS, carGradientStyles } from "../../styles/carGradient";
 import { styleDetails } from "..//../styles/styleDetails";
+import GarageButton from "../components/GarageButton";
 
 type Car = {
   id: number;
@@ -38,11 +41,11 @@ export default function DetailsScreen() {
 
   if (!car)
     return (
-      <ImageBackground
-        source={require("..//../assets/cars/JAC S2.jpg")} // Фонова картинка
-        style={{ flex: 1 }} // Повний екран
-        resizeMode="cover" // Покриває весь простір
-        imageStyle={{ borderRadius: 20 }} // Закруглення
+      <LinearGradient
+        colors={CAR_GRADIENTS.metallicSilver} // Металік!
+        start={{ x: 1, y: 1 }} // Зліва зверху
+        end={{ x: 0, y: 0 }} // Справа донизу
+        style={carGradientStyles.gradientContainer}
       >
         <View style={styleDetails.container}>
           <Animated.Text
@@ -59,8 +62,9 @@ export default function DetailsScreen() {
           >
             Машина не знайдена. Виберіть , будь ласка автомобіль на свій вкус.
           </Animated.Text>
-        </View>{" "}
-      </ImageBackground>
+          <GarageButton title="🏁 Garage" route="/garage" />
+        </View>
+      </LinearGradient>
     );
   return (
     <View style={styleDetails.container}>
